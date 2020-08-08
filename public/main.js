@@ -14,7 +14,11 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
     height: 680,
-    webPreferences: { webSecurity: false, nodeIntegration: true },
+    webPreferences: {
+      webSecurity: false,
+      nodeIntegration: true,
+      webviewTag: true,
+    },
   });
 
   mainWindow.loadURL(
@@ -27,6 +31,29 @@ function createWindow() {
 }
 
 app.on("ready", createWindow);
+// setInterval(function () {
+//   logPerformanceMetrics();
+// }, 10000);
+
+// function logPerformanceMetrics() {
+//   let total = { memory: 0, cpu: 0, maxMemory: 0 };
+//   app.getAppMetrics().forEach(function (metric) {
+//     total.memory += metric.memory.workingSetSize / 1024;
+//     total.cpu += metric.cpu.percentCPUUsage * 100;
+//     total.maxMemory += metric.memory.peakWorkingSetSize / 1024;
+//   });
+//   console.log(
+//     app.getAppMetrics().length +
+//       " processes || memory: " +
+//       total.memory +
+//       "MB || cpu:" +
+//       total.cpu +
+//       "% || maxMemory:" +
+//       total.maxMemory +
+//       "MB"
+//   );
+//   return total;
+// }
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
