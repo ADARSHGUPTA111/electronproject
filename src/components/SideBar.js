@@ -1,24 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import logo from "../icons/github.png";
-import data from "../data";
 
 export class SideBar extends Component {
   render() {
-    let { sideBarData } = this.props;
+    let { sideBarData, setActiveLink } = this.props;
     return (
       <>
         <SideMenu>
-          {/* <a href={data[0].url} target="test"> */}
-          {/* <img alt="github" src={logo} height="50px" width="50px"></img> */}
-          {/* </a> */}
           {sideBarData.map((eachLink) => {
             return (
-              <Label
-                href=""
-                onClick={(e) => this.props.setActiveLink(e, eachLink.link)}
-              >
-                {eachLink.label}
+              <Label href="" onClick={(e) => setActiveLink(e, eachLink.link)}>
+                <img src={eachLink.image} />
               </Label>
             );
           })}
@@ -30,12 +22,20 @@ export class SideBar extends Component {
 
 const Label = styled.a`
   display: block;
+  padding: 3px 3px;
+  margin: 5px 5px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 `;
 
 const SideMenu = styled.div`
-  width: 7%;
-  height: 670px;
-  background-color: yellow;
+  width: 50px;
+  height: 100vh;
+  background-color: #f9cdc4;
   overflow: hidden;
 `;
 export default SideBar;
