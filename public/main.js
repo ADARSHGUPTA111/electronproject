@@ -10,6 +10,11 @@ const isDev = require("electron-is-dev");
 
 let mainWindow;
 
+app.userAgentFallback = app.userAgentFallback.replace(
+  "Electron/" + process.versions.electron,
+  ""
+);
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
@@ -31,6 +36,7 @@ function createWindow() {
 }
 
 app.on("ready", createWindow);
+
 // setInterval(function () {
 //   logPerformanceMetrics();
 // }, 10000);
