@@ -7,13 +7,17 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
+const userAgent = require("./src/helpers/userAgent");
 
 let mainWindow;
 
-app.userAgentFallback = app.userAgentFallback.replace(
-  "Electron/" + process.versions.electron,
-  ""
-);
+// app.userAgentFallback = app.userAgentFallback.replace(
+//   "Electron/" + process.versions.electron,
+//   ""
+// );
+
+//to fix google sign-up and whatsapp updated version
+app.userAgentFallback = userAgent();
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -29,8 +33,13 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${path.join(__dirname, "../build/index.html")}`,
+    {
+      userAgent:
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+    }
   );
+  // this makes the browser in the app to a more latest version
 
   mainWindow.on("closed", () => (mainWindow = null));
 }

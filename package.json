@@ -12,21 +12,21 @@
     "electron": "^9.1.2",
     "electron-builder": "^20.27.1",
     "electron-is-dev": "^0.3.0",
+    "macos-version": "^5.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-iframe": "^1.8.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
     "wait-on": "^2.1.0"
   },
-  "main": "public/main.js",
+  "main": "main.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron-dev": "concurrently \"SET BROWSER=none&&npm run start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron": "concurrently \"SET BROWSER=none&&npm run start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": "react-app"
