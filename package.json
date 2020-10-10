@@ -12,6 +12,7 @@
     "electron": "^9.1.2",
     "electron-builder": "^20.27.1",
     "electron-is-dev": "^0.3.0",
+    "electron-process-reporter": "^1.4.0",
     "macos-version": "^5.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
