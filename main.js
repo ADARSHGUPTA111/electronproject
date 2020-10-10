@@ -11,6 +11,7 @@ const userAgent = require("./src/helpers/userAgent");
 
 let mainWindow;
 
+let suraj=0;
 // app.userAgentFallback = app.userAgentFallback.replace(
 //   "Electron/" + process.versions.electron,
 //   ""
