@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
+import './components/mystyle.css';
 import SideBar from "./components/SideBar";
 import MainContent from "./components/MainContent";
 import "./index.css";
@@ -53,22 +52,16 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <MainWrapper>
-          <SideBar
-            sideBarData={sideBarData}
-            setActiveLink={this.setActiveLink}
-          />
-          <MainContent activeLink={this.state.activeLink} />
-        </MainWrapper>
-      </>
+      <div className="mainwrapper">
+        <SideBar
+          sideBarData={sideBarData}
+          setActiveLink={this.setActiveLink}
+        />
+        <MainContent activeLink={this.state.activeLink} />
+      </div>
     );
   }
 }
 
-const MainWrapper = styled.div`
-  display: flex;
-  flex: auto;
-`;
 
 export default App;

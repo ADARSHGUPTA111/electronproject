@@ -1,41 +1,27 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import './mystyle.css';
+import MainContent from './MainContent';
 
 export class SideBar extends Component {
+  
   render() {
     let { sideBarData, setActiveLink } = this.props;
     return (
-      <>
-        <SideMenu>
+      <nav class="nav flex-column navbar-light bg-light">
+        <a className="nav-link" >
+          <img alt="icon" src="https://www.invidelabs.com/imgs/logo.png" />
+          <span class="sr-only">(current)</span>
+        </a>
           {sideBarData.map((eachLink) => {
             return (
-              <Label href="" onClick={(e) => setActiveLink(e, eachLink.link)}>
-                <img src={eachLink.image} />
-              </Label>
-            );
-          })}
-        </SideMenu>
-      </>
+                <a className="nav-link" onClick={(e) => setActiveLink(e, eachLink.link)}>
+                  <img alt="icon" src={eachLink.image} />
+                </a>
+              );
+            })}
+        </nav>
     );
   }
 }
 
-const Label = styled.a`
-  display: block;
-  padding: 3px 3px;
-  margin: 5px 5px;
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-`;
-
-const SideMenu = styled.div`
-  width: 50px;
-  height: 100vh;
-  background-color: #f9cdc4;
-  overflow: hidden;
-`;
 export default SideBar;

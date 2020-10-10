@@ -1,0 +1,17 @@
+.mainwrapper{
+    display: flex;
+    flex: auto;
+}
+
+a:hover{
+    cursor: pointer;
+    background-color: rgb(173, 169, 169);
+}
+a:active{
+    background-color: rgb(95, 93, 93);
+}
+img{
+    width: 35px;
+    height: auto;
+    display: block;
+}
