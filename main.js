@@ -4,12 +4,15 @@ const ipcMain = electron.ipcMain;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
+const report = require('electron-process-reporter');
+
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
 const userAgent = require("./src/helpers/userAgent");
 
 let mainWindow;
+
 
 // app.userAgentFallback = app.userAgentFallback.replace(
 //   "Electron/" + process.versions.electron,
@@ -18,6 +21,8 @@ let mainWindow;
 
 //to fix google sign-up and whatsapp updated version
 app.userAgentFallback = userAgent();
+report.onExtendedProcessMetrics(app, { samplingInterval: 1000 })
+.subscribe(report => console.log(report));
 
 function createWindow() {
   mainWindow = new BrowserWindow({
