@@ -3,14 +3,20 @@ import styled from "styled-components";
 
 export class SideBar extends Component {
   render() {
-    let { sideBarData, setActiveLink } = this.props;
+    let { sideBarData, setActiveLink, activeLink } = this.props;
+    console.log(activeLink);
+
     return (
       <>
         <SideMenu>
           {sideBarData.map((eachLink) => {
             return (
-              <Label href="" onClick={(e) => setActiveLink(e, eachLink.link)}>
-                <img src={eachLink.image} />
+              <Label
+                isActiveLink={eachLink.link === activeLink}
+                href=""
+                onClick={(e) => setActiveLink(e, eachLink.link)}
+              >
+                <img alt="icon" src={eachLink.image} />
               </Label>
             );
           })}
@@ -29,6 +35,14 @@ const Label = styled.a`
     width: 100%;
     height: auto;
     display: block;
+    box-shadow: ${(props) =>
+      props.isActiveLink ? "2px 2px 3px 2px rgba(61,8,33,1)" : "none"};
+    z-index: ${(props) => (props.isActiveLink ? "-1" : "none")};
+  }
+  img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    opacity: 0.6;
+    cursor: pointer;
   }
 `;
 
@@ -38,4 +52,5 @@ const SideMenu = styled.div`
   background-color: #f9cdc4;
   overflow: hidden;
 `;
+
 export default SideBar;
