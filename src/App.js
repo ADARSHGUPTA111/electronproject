@@ -44,6 +44,7 @@ class App extends Component {
 
   setActiveLink = (e, activeLink) => {
     e.preventDefault();
+    console.log(e.target);
     this.setState({
       activeLink,
     });
@@ -58,6 +59,7 @@ class App extends Component {
           <SideBar
             sideBarData={sideBarData}
             setActiveLink={this.setActiveLink}
+            activeLink={this.state.activeLink}
           />
           <MainContent activeLink={this.state.activeLink} />
         </MainWrapper>
