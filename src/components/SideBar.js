@@ -1,27 +1,61 @@
-import React, { Component } from "react";
-import './mystyle.css';
-import MainContent from './MainContent';
+  import React, { Component } from "react";
+  import styled from "styled-components";
 
-export class SideBar extends Component {
-  
-  render() {
-    let { sideBarData, setActiveLink } = this.props;
-    return (
-      <nav class="nav flex-column navbar-light bg-light">
-        <a className="nav-link" >
-          <img alt="icon" src="https://www.invidelabs.com/imgs/logo.png" />
-          <span class="sr-only">(current)</span>
-        </a>
-          {sideBarData.map((eachLink) => {
-            return (
-                <a className="nav-link" onClick={(e) => setActiveLink(e, eachLink.link)}>
+  export class SideBar extends Component {
+    render() {
+      let { sideBarData, setActiveLink, activeLink } = this.props;
+      console.log(activeLink);
+
+      return (
+        <>
+          <SideMenu>
+            {sideBarData.map((eachLink) => {
+              return (
+                <Label
+                  isActiveLink={eachLink.link === activeLink}
+                  href=""
+                  onClick={(e) => setActiveLink(e, eachLink.link)}
+                >
                   <img alt="icon" src={eachLink.image} />
-                </a>
+                </Label>
               );
             })}
-        </nav>
-    );
+          </SideMenu>
+        </>
+      );
+    }
   }
-}
 
-export default SideBar;
+  const Label = styled.a`
+    display: block;
+    padding: 10px;
+    transition: ease 2s;
+    background-color: ${(props) =>
+      props.isActiveLink ? "rgb(153, 152, 152)" : "none"};
+    z-index: ${(props) => (props.isActiveLink ? "-1" : "none")};
+
+    &:hover{
+      background-color:darkgrey;
+      cursor: pointer;
+    }
+    img {
+      width: 35px;
+      height: 35px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      padding: 10px;
+    }
+  `;
+
+  const SideMenu = styled.div`
+    width: 60px;
+    height: 100vh;
+    background-color: lightgrey;
+    overflow: hidden;
+    @media (max-width: 900px) {
+      width: 80px;
+    }
+  `;
+
+  export default SideBar;
