@@ -15,7 +15,6 @@ export class MainContent extends Component {
           src={activeLink}
           style={{ width: "200vh", height: "100vh" }}
         ></webview>
-        )
       </>
     );
   }
