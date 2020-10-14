@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+//import styled from "styled-components";
 
 // const { BrowserWindow } = window.require("electron").remote;
 export class MainContent extends Component {

@@ -10,15 +10,28 @@ export class SideBar extends Component {
       <>
         <SideMenu>
           {sideBarData.map((eachLink) => {
-            return (
-              <Label
-                isActiveLink={eachLink.link === activeLink}
-                href=""
-                onClick={(e) => setActiveLink(e, eachLink.link)}
-              >
+            if(eachLink.label === "Slack" ||  eachLink.label === "Invide Labs"){
+              return (
+                <Label
+                  isActiveLink={eachLink.link === activeLink}
+                  href=""
+                  onClick={(e) => setActiveLink(e, eachLink.link)}
+                >
                 <img alt="icon" src={eachLink.image} />
-              </Label>
-            );
+                </Label>
+              );
+            }
+            else{
+              return (
+                <Label
+                  isActiveLink={eachLink.link === activeLink}
+                  href=""
+                  onClick={(e) => setActiveLink(e, eachLink.link)}
+                >
+                  <img alt="icon" src={`${eachLink.link}/favicon.ico`} />
+                </Label>
+              );
+            }
           })}
         </SideMenu>
       </>
