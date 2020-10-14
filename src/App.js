@@ -35,6 +35,12 @@ const sideBarData = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/WhatsApp_logo-color-vertical.svg/50px-WhatsApp_logo-color-vertical.svg.png",
   },
+  {
+    label: "Gmail",
+    link: "https://mail.google.com/",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg"
+  }
 ];
 
 class App extends Component {
