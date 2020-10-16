@@ -4,7 +4,7 @@ const ipcMain = electron.ipcMain;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
-const report = require('electron-process-reporter');
+const report = require('electron-process-manager');
 
 const path = require("path");
 const url = require("url");
@@ -21,8 +21,6 @@ let mainWindow;
 
 //to fix google sign-up and whatsapp updated version
 app.userAgentFallback = userAgent();
-report.onExtendedProcessMetrics(app, { samplingInterval: 1000 })
-.subscribe(report => console.log(report));
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -47,9 +45,11 @@ function createWindow() {
   // this makes the browser in the app to a more latest version
 
   mainWindow.on("closed", () => (mainWindow = null));
+  report.openProcessManager();
 }
 
 app.on("ready", createWindow);
+
 
 // setInterval(function () {
 //   logPerformanceMetrics();
