@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import AddCustomButton from "./AddCustomButton";
 
 export class SideBar extends Component {
   render() {
@@ -36,7 +35,6 @@ export class SideBar extends Component {
               );
             }
           })}
-          <AddCustomButton />
         </SideMenu>
       </>
     );
