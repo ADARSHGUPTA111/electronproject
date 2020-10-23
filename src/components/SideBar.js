@@ -1,10 +1,28 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import AddCustomWindow from "./AddCustomWindow";
 
 export class SideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
+      openNewWindow: false
+    };
+  }
+  openAddCustomWindow = () => {
+    this.setState({
+      ...this.state,
+      sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
+      openNewWindow: true
+    });
+    console.log("hey!@");
+  };
   render() {
-    let { sideBarData, setActiveLink, activeLink } = this.props;
+    let { setActiveLink, activeLink } = this.props;
+    let { sideBarData, openNewWindow } = this.state;
     console.log(activeLink);
+    // let sideBarData = JSON.parse(window.localStorage.getItem("sideBarData"));
 
     return (
       <>
@@ -35,6 +53,9 @@ export class SideBar extends Component {
               );
             }
           })}
+
+          <button onClick={this.openAddCustomWindow}>Add App</button>
+          {openNewWindow && <AddCustomWindow openNewWindow={openNewWindow} />}
         </SideMenu>
       </>
     );
