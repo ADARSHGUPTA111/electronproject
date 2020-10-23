@@ -4,70 +4,66 @@ import styled from "styled-components";
 import SideBar from "./components/SideBar";
 import MainContent from "./components/MainContent";
 import "./index.css";
+// const { localStorage } = require("electron-browser-storage")
 
-const sideBarData = [
+var sideBarData = [
   {
     label: "Invide Labs",
     link: "https://app.invidelabs.com",
-    image: "https://www.invidelabs.com/imgs/logo.png",
+    image: "https://www.invidelabs.com/imgs/logo.png"
   },
   {
     label: "Slack",
     link: "https://slack.com/workspace-signin",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg"
   },
   {
     label: "Microsoft Teams",
-    link: "https://teams.microsoft.com/",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/512px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png",
+    link: "https://teams.microsoft.com/"
   },
   {
     label: "Trello",
-    link: "https://trello.com/",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Antu_trello.svg/1200px-Antu_trello.svg.png",
+    link: "https://trello.com/"
   },
   {
     label: "WhatsApp",
-    link: "https://web.whatsapp.com/",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/WhatsApp_logo-color-vertical.svg/50px-WhatsApp_logo-color-vertical.svg.png",
+    link: "https://web.whatsapp.com/"
   },
   {
     label: "Gmail",
-    link: "https://mail.google.com/",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg"
+    link: "https://mail.google.com/"
   }
 ];
+localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
 
 class App extends Component {
-  state = {
-    activeLink: "https://app.invidelabs.com",
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeLink: "https://app.invidelabs.com"
+    };
+  }
 
   setActiveLink = (e, activeLink) => {
     e.preventDefault();
     console.log(e.target);
     this.setState({
-      activeLink,
+      ...this.state,
+      activeLink
     });
   };
 
   componentDidMount() {}
 
   render() {
+    const { activeLink } = this.state;
     return (
       <>
         <MainWrapper>
-          <SideBar
-            sideBarData={sideBarData}
-            setActiveLink={this.setActiveLink}
-            activeLink={this.state.activeLink}
-          />
-          <MainContent activeLink={this.state.activeLink} />
+          <SideBar setActiveLink={this.setActiveLink} activeLink={activeLink} />
+          <MainContent activeLink={activeLink} />
         </MainWrapper>
       </>
     );
