@@ -1,6 +1,5 @@
 //This needs to be added in order to run both react and electron together
 const electron = require("electron");
-const ipcMain = electron.ipcMain;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -34,7 +33,8 @@ function createWindow() {
       webSecurity: false,
       nodeIntegration: true,
       webviewTag: true,
-    },
+      nativeWindowOpen: true
+    }
   });
 
   mainWindow.loadURL(
@@ -43,16 +43,18 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`,
     {
       userAgent:
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
     }
+    // this makes the browser in the app to a more latest version
   );
-  // this makes the browser in the app to a more latest version
 
   mainWindow.on("closed", () => (mainWindow = null));
   openProcessManager();
 }
 
-app.on("ready", createWindow);
+app.on("ready", () => {
+  createWindow();
+});
 
 // setInterval(function () {
 //   logPerformanceMetrics();
