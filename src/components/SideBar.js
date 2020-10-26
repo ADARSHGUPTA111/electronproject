@@ -14,7 +14,7 @@ export class SideBar extends Component {
     this.setState({
       ...this.state,
       sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
-      openNewWindow: true
+      openNewWindow: !this.state.openNewWindow
     });
     console.log("hey!@");
   };
