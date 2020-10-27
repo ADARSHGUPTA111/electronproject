@@ -13,6 +13,9 @@ export class MainContent extends Component {
         <webview
           id="foo"
           src={activeLink}
+          autosize="true" 
+          preload={`file://${__dirname}/preload.js`} 
+          webpreferences="nativeWindowOpen=true" allowpopups="true"
           style={{ width: "200vh", height: "100vh" }}
         ></webview>
       </>

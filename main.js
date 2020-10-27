@@ -1,6 +1,7 @@
 //This needs to be added in order to run both react and electron together
 const electron = require("electron");
 const app = electron.app;
+const { shell } = require('electron');
 const BrowserWindow = electron.BrowserWindow;
 
 const report = require("electron-process-reporter");
@@ -27,7 +28,7 @@ function createWindow() {
     width: 900,
     height: 680,
     webPreferences: {
-      webSecurity: false,
+      webSecurity: true,
       nodeIntegration: true,
       webviewTag: true,
       nativeWindowOpen: true
@@ -37,7 +38,7 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`,
+      : `file://${path.join(__dirname +"/public")}`,  
     {
       userAgent:
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
@@ -87,3 +88,17 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+// Listen for web contents being created
+app.on('web-contents-created', (e, contents) => {
+
+  // Check for a webview
+  if (contents.getType() == 'webview') {
+
+    // Listen for any new window events
+    contents.on('new-window', (e, url) => {
+      e.preventDefault()
+      shell.openExternal(url)
+    })
+  }
+})

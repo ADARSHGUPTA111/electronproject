@@ -56,7 +56,6 @@ class App extends Component {
   };
 
   componentDidMount() {}
-
   render() {
     const { activeLink } = this.state;
     return (
