@@ -9,6 +9,9 @@ const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
 const userAgent = require("./src/helpers/userAgent");
+const { openProcessManager } = require('electron-process-manager');
+ 
+
 
 let mainWindow;
 
@@ -46,6 +49,7 @@ function createWindow() {
   );
 
   mainWindow.on("closed", () => (mainWindow = null));
+  openProcessManager();
 }
 
 app.on("ready", () => {
