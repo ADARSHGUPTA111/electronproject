@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import AddCustomWindow from "./AddCustomWindow";
+const electron = window.require("electron");
+const ipcRenderer = electron.ipcRenderer;
 
 export class SideBar extends Component {
   constructor(props) {
@@ -17,6 +19,14 @@ export class SideBar extends Component {
       openNewWindow: !this.state.openNewWindow
     });
     console.log("hey!@");
+  };
+  refreshOnSubmitInAddCustomWindow = (e, activeLink) => {
+    this.setState({
+      ...this.state,
+      sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
+      openNewWindow: false
+    });
+    this.props.setActiveLink(e, activeLink);
   };
   render() {
     let { setActiveLink, activeLink } = this.props;
@@ -55,7 +65,13 @@ export class SideBar extends Component {
           })}
 
           <button onClick={this.openAddCustomWindow}>Add App</button>
-          {openNewWindow && <AddCustomWindow openNewWindow={openNewWindow} />}
+          {openNewWindow && (
+            <AddCustomWindow
+              refreshOnSubmitInAddCustomWindow={
+                this.refreshOnSubmitInAddCustomWindow
+              }
+            />
+          )}
         </SideMenu>
       </>
     );

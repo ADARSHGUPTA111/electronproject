@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import NewWindow from "react-new-window";
+const electron = window.require("electron");
+const remote = electron.remote;
+const ipcRenderer = electron.ipcRenderer;
 
 export class AddCustomWindow extends Component {
   constructor(props) {
@@ -7,7 +10,7 @@ export class AddCustomWindow extends Component {
     this.state = {
       label: " ",
       link: " ",
-      openNewWindow: this.props.openNewWindow
+      openNewWindow: true
     };
   }
   handleInputChange = event => {
@@ -30,31 +33,39 @@ export class AddCustomWindow extends Component {
     localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
     this.setState({
       ...this.state,
-      openNewWindow: !this.state.openNewWindow
+      openNewWindow: false
     });
-    console.log(this.state.openNewWindow);
+
+    this.props.refreshOnSubmitInAddCustomWindow(e, this.state.link);
+
+    //This code below is just for vhecking purpose ... Delete it at last
+    // ipcRenderer.send("Time to Check LocalStorage", "hi");
+    // window.close();
+    // let window = remote.getCurrentWindow();
   };
+
+  componentDidMount() {
+    let window = remote.getCurrentWindow();
+    // console.log(window);
+  }
 
   render() {
     let { openNewWindow } = this.state;
-    console.log(openNewWindow);
-
-    const title = "Add Custom App";
 
     return (
       <>
         {openNewWindow && (
           <NewWindow
-            title={{ title }}
             features={{
               width: 600,
               height: 480
             }}
+            copyStyles={false}
           >
             <h1>Hello!</h1>
             <form onSubmit={this.setToLocalStorage}>
               <label>
-                Name of App:
+                Name of Apps:
                 <input
                   type="text"
                   name="label"
