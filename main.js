@@ -2,6 +2,7 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const ipcMain = electron.ipcMain;
 
 const report = require("electron-process-reporter");
 
@@ -9,9 +10,7 @@ const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
 const userAgent = require("./src/helpers/userAgent");
-const { openProcessManager } = require('electron-process-manager');
- 
-
+const { openProcessManager } = require("electron-process-manager");
 
 let mainWindow;
 
@@ -49,7 +48,7 @@ function createWindow() {
   );
 
   mainWindow.on("closed", () => (mainWindow = null));
-  openProcessManager();
+  // openProcessManager();
 }
 
 app.on("ready", () => {
@@ -79,6 +78,12 @@ app.on("ready", () => {
 //   );
 //   return total;
 // }
+
+//The Code below is just for checking purpose ... Delete this at last
+// ipcMain.on("Time to Check LocalStorage", (event, arg) => {
+//   console.log(arg);
+//   mainWindow.webContents.send("Update State", "hi from main");
+// });
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
