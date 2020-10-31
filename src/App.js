@@ -48,7 +48,6 @@ class App extends Component {
 
   setActiveLink = (e, activeLink) => {
     e.preventDefault();
-    console.log(e.target);
     this.setState({
       ...this.state,
       activeLink

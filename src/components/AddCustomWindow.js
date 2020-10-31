@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import NewWindow from "react-new-window";
+import Modal from "react-modal";
 const electron = window.require("electron");
-const remote = electron.remote;
 const ipcRenderer = electron.ipcRenderer;
 
+Modal.setAppElement("#root");
 export class AddCustomWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       label: " ",
       link: " ",
-      openNewWindow: true
+      modalIsOpen: true
     };
   }
   handleInputChange = event => {
@@ -31,11 +31,7 @@ export class AddCustomWindow extends Component {
     const sideBarData = JSON.parse(localStorage.getItem("sideBarData")) || [];
     sideBarData.push(newApp);
     localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
-    this.setState({
-      ...this.state,
-      openNewWindow: false
-    });
-
+    this.closeModal();
     this.props.refreshOnSubmitInAddCustomWindow(e, this.state.link);
 
     //This code below is just for vhecking purpose ... Delete it at last
@@ -44,48 +40,45 @@ export class AddCustomWindow extends Component {
     // let window = remote.getCurrentWindow();
   };
 
-  componentDidMount() {
-    let window = remote.getCurrentWindow();
-    // console.log(window);
-  }
+  closeModal = () => {
+    this.setState({
+      ...this.state,
+      modalIsOpen: false
+    });
+  };
+
+  componentDidMount() {}
 
   render() {
-    let { openNewWindow } = this.state;
+    let { modalIsOpen } = this.state;
 
     return (
       <>
-        {openNewWindow && (
-          <NewWindow
-            features={{
-              width: 600,
-              height: 480
-            }}
-            copyStyles={false}
-          >
-            <h1>Hello!</h1>
-            <form onSubmit={this.setToLocalStorage}>
-              <label>
-                Name of Apps:
-                <input
-                  type="text"
-                  name="label"
-                  value={this.state.value}
-                  onChange={this.handleInputChange}
-                />
-              </label>
-              <label>
-                Link for App :
-                <input
-                  type="text"
-                  name="link"
-                  value={this.state.value}
-                  onChange={this.handleInputChange}
-                />
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
-          </NewWindow>
-        )}
+        <Modal isOpen={modalIsOpen}>
+          <h1>Hello!</h1>
+          <form onSubmit={this.setToLocalStorage}>
+            <label>
+              Name of Apps:
+              <input
+                type="text"
+                name="label"
+                value={this.state.value}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <label>
+              Link for App :
+              <input
+                type="text"
+                name="link"
+                value={this.state.value}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+          <button onClick={this.closeModal}>Close</button>
+        </Modal>
       </>
     );
   }
