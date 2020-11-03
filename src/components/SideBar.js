@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import AddCustomWindow from "./AddCustomWindow";
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
+// const electron = window.require("electron");
+// const ipcRenderer = electron.ipcRenderer;
 
 export class SideBar extends Component {
   constructor(props) {
@@ -87,7 +87,7 @@ const Label = styled.a`
   display: block;
   padding: 10px;
   transition: ease 1.5s;
-  border-radius:  15%;
+  border-radius: 15%;
   background-color: ${props =>
     props.isActiveLink ? "rgb(153, 152, 152)" : "none"};
   z-index: ${props => (props.isActiveLink ? "-1" : "none")};
@@ -115,19 +115,19 @@ const SideMenu = styled.div`
   @media (max-width: 900px) {
     width: 80px;
   }
-  button{
+  button {
     background-color: Transparent;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
     overflow: hidden;
-    outline:none;
-    padding:0;
+    outline: none;
+    padding: 0;
   }
   .svg-plus {
-     height: 55px;
-     stroke: black 
-    }
-  button:hover{ 
+    height: 55px;
+    stroke: black;
+  }
+  button:hover {
     background-color: darkgrey;
     border-radius: 15%;
     transition: ease 0.5s;
@@ -135,7 +135,7 @@ const SideMenu = styled.div`
       stroke: blue;
       transform: scale(1.3);
       transition: ease 0.6s;
-     } 
+    }
   }
 `;
 
