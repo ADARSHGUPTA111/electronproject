@@ -29,7 +29,6 @@ function createWindow() {
     width: 900,
     height: 680,
     webPreferences: {
-      webSecurity: false,
       nodeIntegration: true,
       webviewTag: true,
       nativeWindowOpen: true
@@ -42,7 +41,7 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`,
     {
       userAgent:
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
     }
     // this makes the browser in the app to a more latest version
   );

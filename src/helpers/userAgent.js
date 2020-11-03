@@ -38,9 +38,7 @@ function userAgent(removeChromeVersion = false) {
   }
 
   // TODO: Update AppleWebKit and Safari version after electron update
-  return `Mozilla/5.0 (${platformString}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome${
-    !removeChromeVersion ? `/${process.versions.chrome}` : ""
-  } Safari/537.36`;
+  return `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36`;
   // Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) old-airport-include/1.0.0 Chrome Electron/7.1.7 Safari/537.36
 }
 

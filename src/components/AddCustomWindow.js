@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
+import './formCSS.css';
 const electron = window.require("electron");
 const ipcRenderer = electron.ipcRenderer;
 
+
 Modal.setAppElement("#root");
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    backgroundColor       : ' #f2f2f2',
+    borderRadius          : '4px',
+    padding              : '20px'
+  }
+};
+
 export class AddCustomWindow extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +63,7 @@ export class AddCustomWindow extends Component {
       modalIsOpen: false
     });
   };
-
+  
   componentDidMount() {}
 
   render() {
@@ -54,30 +71,21 @@ export class AddCustomWindow extends Component {
 
     return (
       <>
-        <Modal isOpen={modalIsOpen}>
-          <h1>Hello!</h1>
+        <Modal style={customStyles} isOpen={modalIsOpen}>
+          <h1 style={{textAlign:"center",fontSize:"40px"}}>Add Your Own Custom App</h1>
+          <br />
           <form onSubmit={this.setToLocalStorage}>
-            <label>
-              Name of Apps:
-              <input
-                type="text"
-                name="label"
-                value={this.state.value}
-                onChange={this.handleInputChange}
-              />
-            </label>
-            <label>
-              Link for App :
-              <input
-                type="text"
-                name="link"
-                value={this.state.value}
-                onChange={this.handleInputChange}
-              />
-            </label>
-            <input type="submit" value="Submit" />
+            <label for="label">Name of App:</label>
+            <input type="text" id="label" name="label" placeholder="App Name" value={this.state.value}
+                onChange={this.handleInputChange}/>
+
+            <label for="lname"> Link for App :</label>
+            <input type="text" id="lname" name="lastname" placeholder="link to website"  value={this.state.value}
+                onChange={this.handleInputChange}/>
+
+            <input type="submit" value="Submit"  />&nbsp;
+            <button className="close" onClick={this.closeModal}>Close</button>
           </form>
-          <button onClick={this.closeModal}>Close</button>
         </Modal>
       </>
     );
