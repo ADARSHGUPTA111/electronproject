@@ -63,8 +63,13 @@ export class SideBar extends Component {
               );
             }
           })}
-
-          <button onClick={this.openAddCustomWindow}>Add App</button>
+          <button onClick={this.openAddCustomWindow}>
+            <svg class="svg-plus" viewBox="0 0 100 100">
+              <title>Add Your App</title>
+              <line x1="32.5" y1="50" x2="67.5" y2="50" stroke-width="5"></line>
+              <line x1="50" y1="32.5" x2="50" y2="67.5" stroke-width="5"></line>
+            </svg>
+          </button>
           {openNewWindow && (
             <AddCustomWindow
               refreshOnSubmitInAddCustomWindow={
@@ -81,7 +86,8 @@ export class SideBar extends Component {
 const Label = styled.a`
   display: block;
   padding: 10px;
-  transition: ease 2s;
+  transition: ease 1.5s;
+  border-radius:  15%;
   background-color: ${props =>
     props.isActiveLink ? "rgb(153, 152, 152)" : "none"};
   z-index: ${props => (props.isActiveLink ? "-1" : "none")};
@@ -89,6 +95,7 @@ const Label = styled.a`
   &:hover {
     background-color: darkgrey;
     cursor: pointer;
+    border-radius: 15%;
   }
   img {
     width: 35px;
@@ -107,6 +114,28 @@ const SideMenu = styled.div`
   overflow: hidden;
   @media (max-width: 900px) {
     width: 80px;
+  }
+  button{
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    padding:0;
+  }
+  .svg-plus {
+     height: 55px;
+     stroke: black 
+    }
+  button:hover{ 
+    background-color: darkgrey;
+    border-radius: 15%;
+    transition: ease 0.5s;
+    .svg-plus {
+      stroke: blue;
+      transform: scale(1.3);
+      transition: ease 0.6s;
+     } 
   }
 `;
 

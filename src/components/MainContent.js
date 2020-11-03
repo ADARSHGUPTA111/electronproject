@@ -13,6 +13,8 @@ export class MainContent extends Component {
         <webview
           id="foo"
           src={activeLink}
+          allowpopups="true"
+          useragent="Chrome/86.0.4240.111"
           style={{ width: "200vh", height: "100vh" }}
         ></webview>
       </>
