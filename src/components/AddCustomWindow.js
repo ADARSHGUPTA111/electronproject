@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
-import "./formCSS.css";
-// const electron = window.require("electron");
-// const ipcRenderer = electron.ipcRenderer;
+import styled from "styled-components";
+// import "./formCSS.css";
+const electron = window.require("electron");
+const ipcRenderer = electron.ipcRenderer;
 
 Modal.setAppElement("#root");
 
@@ -75,7 +76,7 @@ export class AddCustomWindow extends Component {
             Add Your Own Custom App
           </h1>
           <br />
-          <form onSubmit={this.setToLocalStorage}>
+          <StyledForm onSubmit={this.setToLocalStorage}>
             <label for="label">Name of App:</label>
             <input
               type="text"
@@ -99,11 +100,49 @@ export class AddCustomWindow extends Component {
             <button className="close" onClick={this.closeModal}>
               Close
             </button>
-          </form>
+          </StyledForm>
         </Modal>
       </>
     );
   }
 }
+
+const StyledForm = styled.form`
+  input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #06ec12;
+  }
+
+  .close {
+    background-color: #8b1e1e;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .close:hover {
+    background-color: red;
+  }
+`;
 
 export default AddCustomWindow;
