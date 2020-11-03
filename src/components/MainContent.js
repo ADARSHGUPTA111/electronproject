@@ -14,7 +14,7 @@ export class MainContent extends Component {
           id="foo"
           src={activeLink}
           allowpopups="true"
-          useragent="Chrome/86.0.4240.111"
+          useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
           style={{ width: "200vh", height: "100vh" }}
         ></webview>
       </>
