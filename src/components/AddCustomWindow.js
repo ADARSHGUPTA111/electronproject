@@ -85,10 +85,10 @@ export class AddCustomWindow extends Component {
               value={this.state.value}
               onChange={this.handleInputChange}
             />
-            <label for="lname"> Link for App :</label>
+            <label for="link"> Link for App :</label>
             <input
               type="text"
-              id="lname"
+              id="link"
               name="link"
               placeholder="link to website"
               value={this.state.value}
