@@ -35,7 +35,9 @@ var sideBarData = [
     link: "https://mail.google.com/"
   }
 ];
-localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
+if (!localStorage.getItem("sideBarData")) {
+  localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
+}
 
 class App extends Component {
   constructor(props) {
