@@ -43,13 +43,19 @@ export class AddCustomWindow extends Component {
     e.preventDefault();
     const newApp = {
       label: this.state.label,
-      link: this.state.link
+      link: this.state.link,
+      restoredLink: this.state.link,
+      count: 0
     };
     const sideBarData = JSON.parse(localStorage.getItem("sideBarData")) || [];
     sideBarData.push(newApp);
     localStorage.setItem("sideBarData", JSON.stringify(sideBarData));
     this.closeModal();
-    this.props.refreshOnSubmitInAddCustomWindow(e, this.state.link);
+    this.props.refreshOnSubmitInAddCustomWindow(
+      e,
+      this.state.link,
+      this.state.label
+    );
 
     //This code below is just for vhecking purpose ... Delete it at last
     // ipcRenderer.send("Time to Check LocalStorage", "hi");
@@ -77,7 +83,7 @@ export class AddCustomWindow extends Component {
           </h1>
           <br />
           <StyledForm onSubmit={this.setToLocalStorage}>
-            <label for="label">Name of App:</label>
+            <label htmlFor="label">Name of App:</label>
             <input
               type="text"
               id="label"
@@ -86,7 +92,7 @@ export class AddCustomWindow extends Component {
               value={this.state.value}
               onChange={this.handleInputChange}
             />
-            <label for="link"> Link for App :</label>
+            <label htmlFor="link"> Link for App :</label>
             <input
               type="text"
               id="link"
