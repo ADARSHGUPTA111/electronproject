@@ -77,6 +77,13 @@ export class SideBar extends Component {
               }
             />
           )}
+          <button>
+            <a 
+              className="feedback"
+              href="mailto:khandelwalsarvesh8@gmail.com,surajgupta7534@gmail.com,adarshgupta4399@gmail.com?subject=Feedback">
+                Feedback
+            </a>
+          </button>
         </SideMenu>
       </>
     );
@@ -108,12 +115,32 @@ const Label = styled.a`
 `;
 
 const SideMenu = styled.div`
-  width: 60px;
+  width: 70px;
   height: 100vh;
   background-color: lightgrey;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
   @media (max-width: 900px) {
-    width: 80px;
+    width: 90px;
   }
   button {
     background-color: Transparent;
@@ -122,6 +149,13 @@ const SideMenu = styled.div`
     overflow: hidden;
     outline: none;
     padding: 0;
+  }
+  .feedback{
+    background-color: darkgrey;
+    font-size: 11px;
+    padding:5px;
+    text-decoration: none;
+    color: black;
   }
   .svg-plus {
     height: 55px;
