@@ -12,6 +12,7 @@ export class SideBar extends Component {
       openNewWindow: false
     };
   }
+
   openAddCustomWindow = () => {
     this.setState({
       ...this.state,
@@ -20,19 +21,41 @@ export class SideBar extends Component {
     });
     console.log("hey!@");
   };
-  refreshOnSubmitInAddCustomWindow = (e, activeLink) => {
+
+  //this function can delete any app
+  handleDoubleClick = (e, labelToDelete) => {
+    // e.preventDefault();
+    console.log("hi");
+    let newSideBarData = JSON.parse(window.localStorage.getItem("sideBarData"));
+    console.log(newSideBarData[0]["label"]);
+    newSideBarData = newSideBarData.filter(
+      eachsideBarData => eachsideBarData.label !== labelToDelete
+    );
+
+    localStorage.setItem("sideBarData", JSON.stringify(newSideBarData));
+    this.setState({
+      ...this.state,
+      sideBarData: JSON.parse(window.localStorage.getItem("sideBarData"))
+    });
+    //After deleting Any App the default app gets opened
+    this.props.setActiveLink(e, "https://app.invidelabs.com");
+  };
+
+  refreshOnSubmitInAddCustomWindow = (e, activeLink, activeLabel) => {
     this.setState({
       ...this.state,
       sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
       openNewWindow: false
     });
-    this.props.setActiveLink(e, activeLink);
+    this.props.setActiveLink(e, activeLink, activeLabel);
   };
+
+  componentDidMount() {}
+
   render() {
     let { setActiveLink, activeLink } = this.props;
     let { sideBarData, openNewWindow } = this.state;
-    console.log(activeLink);
-    // let sideBarData = JSON.parse(window.localStorage.getItem("sideBarData"));
+    // console.log(activeLink);
 
     return (
       <>
@@ -46,7 +69,9 @@ export class SideBar extends Component {
                 <Label
                   isActiveLink={eachLink.link === activeLink}
                   href=""
-                  onClick={e => setActiveLink(e, eachLink.link)}
+                  onClick={e => setActiveLink(e, eachLink.link, eachLink.label)}
+                  onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
+                  // key={i}
                 >
                   <img alt="icon" src={eachLink.image} />
                 </Label>
@@ -56,7 +81,9 @@ export class SideBar extends Component {
                 <Label
                   isActiveLink={eachLink.link === activeLink}
                   href=""
-                  onClick={e => setActiveLink(e, eachLink.link)}
+                  onClick={e => setActiveLink(e, eachLink.link, eachLink.label)}
+                  onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
+                  // key={i}
                 >
                   <img alt="icon" src={`${eachLink.link}/favicon.ico`} />
                 </Label>
@@ -64,10 +91,10 @@ export class SideBar extends Component {
             }
           })}
           <button onClick={this.openAddCustomWindow}>
-            <svg class="svg-plus" viewBox="0 0 100 100">
+            <svg className="svg-plus" viewBox="0 0 100 100">
               <title>Add Your App</title>
-              <line x1="32.5" y1="50" x2="67.5" y2="50" stroke-width="5"></line>
-              <line x1="50" y1="32.5" x2="50" y2="67.5" stroke-width="5"></line>
+              <line x1="32.5" y1="50" x2="67.5" y2="50" strokeWidth="5"></line>
+              <line x1="50" y1="32.5" x2="50" y2="67.5" strokeWidth="5"></line>
             </svg>
           </button>
           {openNewWindow && (
