@@ -1,5 +1,6 @@
 {
   "name": "Custard",
+  "homepage": "./",
   "version": "0.3.1",
   "description": "One app to rule all communication apps",
   "private": true,
@@ -27,13 +28,26 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "concurrently \"SET BROWSER=none&&npm run start\" \"wait-on http://localhost:3000 && electron .\"",
-    "pack": "electron-builder --dir",
+    "pack": "electron-builder build-c.extraMetadata.main=build/main.js",
     "dist": "electron-builder"
   },
   "build": {
     "appId": "your.id",
-    "mac": {
-      "category": "com.invidelabs.custard"
+    "extraMetadata": {
+      "main": "build/main.js"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "icon": "assets/icons/icon",
+      "target": [
+        "nsis"
+      ]
     }
   },
   "devDependencies": {

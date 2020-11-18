@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import SideBar from "./components/SideBar";
-import MainContent from "./components/MainContent";
+import { channels } from '../shared/constants';
+
+
+import SideBar from "../components/SideBar";
+import MainContent from "../components/MainContent";
 import "./index.css";
 // const { localStorage } = require("electron-browser-storage")
-
+// const { ipcRenderer } = window.require('electron');
+const { ipcRenderer } = window; 
 var sideBarData = [
   {
     label: "Invide Labs",
@@ -58,8 +62,11 @@ class App extends Component {
 
     this.state = {
       activeLink: "https://app.invidelabs.com",
-      activeLabel: "Invide Labs"
+      activeLabel: "Invide Labs",
+      appName: 'Custurd',
+      appVersion: '0.3.1',
     };
+    ipcRenderer.send(channels.APP_INFO);
   }
 
   setActiveLink = (e, activeLink, activeLabel) => {

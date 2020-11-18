@@ -1,16 +1,17 @@
 //This needs to be added in order to run both react and electron together
 const electron = require("electron");
+const { channels } = require('./src/shared/constants');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 
-const report = require("electron-process-reporter");
+
 
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
 const userAgent = require("./src/helpers/userAgent");
-const { openProcessManager } = require("electron-process-manager");
+
 
 let mainWindow;
 
@@ -29,9 +30,10 @@ function createWindow() {
     minWidth: 900,
     minHeight: 680,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       webviewTag: true,
-      nativeWindowOpen: true
+      nativeWindowOpen: true,
+      preload: path.join(app.getAppPath(), "src/helpers/preload.js"),
     }
   });
 
@@ -94,4 +96,11 @@ app.on("activate", () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipcMain.on(channels.APP_INFO, (event) => {
+  event.sender.send(channels.APP_INFO, {
+    appName: app.getName(),
+    appVersion: app.getVersion(),
+  });
 });

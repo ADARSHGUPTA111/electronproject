@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
+// const electron = window.require("electron");
+// const ipcRenderer = electron.ipcRenderer;
+const { ipcRenderer } = window; 
 
 export class MainContent extends Component {
   constructor(props) {
