@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import AddCustomWindow from "./AddCustomWindow";
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
+//const electron = window.require("electron");
+//const ipcRenderer = electron.ipcRenderer;
 
 export class SideBar extends Component {
   constructor(props) {
