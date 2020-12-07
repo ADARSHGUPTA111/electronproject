@@ -4,13 +4,10 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 
-//const report = require("electron-process-reporter");
-
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
 const userAgent = require("./src/helpers/userAgent");
-//const { openProcessManager } = require("electron-process-manager");
 
 let mainWindow;
 

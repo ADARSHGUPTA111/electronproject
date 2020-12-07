@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "electron": "^9.1.2",
     "electron-is-dev": "^0.3.0",
     "macos-version": "^5.2.0",
     "react": "^16.13.1",
@@ -36,17 +35,17 @@
       "category": "com.invidelabs.custard"
     }
   },
+  "postinstall": "electron-builder install-app-deps",
   "devDependencies": {
-    "electron-process-manager": "^1.0.0",
-    "electron-process-reporter": "^1.4.0",
-    "wait-on": "^2.1.0",
-    "electron-builder": "^20.27.1",
-    "react-scripts": "3.4.1",
-    "concurrently": "^3.6.1",
-    "cross-env": "^7.0.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2"
+    "@testing-library/user-event": "^7.1.2",
+    "electron": "^9.1.2",
+    "concurrently": "^3.6.1",
+    "cross-env": "^7.0.2",
+    "electron-builder": "^20.44.4",
+    "react-scripts": "3.4.1",
+    "wait-on": "^2.1.0"
   },
   "engines": {
     "node": ">=8.0.0"

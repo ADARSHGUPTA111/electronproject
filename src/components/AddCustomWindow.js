@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
 // import "./formCSS.css";
-const electron = window.require("electron");
-const ipcRenderer = electron.ipcRenderer;
+//const electron = window.require("electron");
+//const ipcRenderer = electron.ipcRenderer;
 
 Modal.setAppElement("#root");
 
