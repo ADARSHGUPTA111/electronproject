@@ -14,4 +14,4 @@ next step
     npm run build
 ```
 
-##### Step 3: You will find created app in dist folder
+### Step 3: You will find created app in dist folder
