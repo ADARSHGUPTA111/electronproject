@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import SideBar from "./components/SideBar";
 import MainContent from "./components/MainContent";
-import "./index.css";
 // const { localStorage } = require("electron-browser-storage")
 
 var sideBarData = [
