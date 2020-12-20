@@ -32,7 +32,7 @@
   "build": {
     "appId": "com.electron.custard",
     "mac": {
-      "category": "com.invidelabs.custard"
+      "category": "public.app-category.productivity":
     }
   },
   "main": "public/electron.js",
