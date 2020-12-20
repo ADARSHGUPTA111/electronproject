@@ -92,10 +92,10 @@ export class SideBar extends Component {
             }
           })}
           <button onClick={this.openAddCustomWindow}>
-            <svg className="svg-plus" height="55px" stroke="black" viewBox="0 0 100 100">
+            <svg className="svg-plus" height="45px" stroke="black" viewBox="0 0 100 100">
               <title>Add Your App</title>
-              <line x1="32.5" y1="50" x2="67.5" y2="50" strokeWidth="5"></line>
-              <line x1="50" y1="32.5" x2="50" y2="67.5" strokeWidth="5"></line>
+              <line x1="32.5" y1="50" x2="67.5" y2="50" strokeWidth="7"></line>
+              <line x1="50" y1="32.5" x2="50" y2="67.5" strokeWidth="7"></line>
             </svg>
           </button>
           {openNewWindow && (
@@ -106,19 +106,20 @@ export class SideBar extends Component {
             />
           )}
           <a href="mailto:khandelwalsarvesh8@gmail.com,surajgupta7534@gmail.com,adarshgupta4399@gmail.com?subject=Feedback">
-            <svg className="feedback" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="35px" height="35px" viewBox="0 0 512 512" style={{enableBackground:"new 0 0 512 512"}} xmlSpace="preserve">
+            <svg className="feedback" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 511 511.9996" width="30px ">
               <title>Feedback</title>
-              <path style={{fill:"#57555C"}} d="M346,482c-8.291,0-15-6.709-15-15s6.709-15,15-15c24.814,0,45-20.186,45-45c0-8.291,6.709-15,15-15  s15,6.709,15,15C421,448.353,387.367,482,346,482z"/>
-              <path style={{fill:"#787780"}} d="M46,280.188c-8.291,0-15-6.709-15-15V257c0-63.354,26.953-126.131,73.916-168.729  c6.123-5.552,15.645-5.112,21.182,1.025c5.566,6.138,5.098,15.63-1.025,21.182C84.35,147.422,61,202.083,61,257v8.188  C61,273.479,54.291,280.188,46,280.188z"/>
-              <path style={{fill:"#57555C"}} d="M466,280.027c-8.291,0-15-6.709-15-15V257c0-54.917-23.35-109.578-64.072-146.521  c-6.123-5.552-6.592-15.044-1.025-21.182c5.596-6.138,15.059-6.577,21.182-1.025C454.047,130.869,481,193.646,481,257v8.027  C481,273.318,474.291,280.027,466,280.027z"/>
-              <path style={{fill:"#B7E0F6"}} d="M437,392c-8.291,0-15-6.709-15-15V257c0-8.291,6.709-15,15-15c41.367,0,75,33.647,75,75  S478.367,392,437,392z"/>
-              <path style={{fill:"#CAE8F9"}} d="M75,392c-41.367,0-75-33.647-75-75s33.633-75,75-75c8.291,0,15,6.709,15,15v120  C90,385.291,83.291,392,75,392z"/>
-              <path style={{fill:"#1689FC"}} d="M316,512c-24.814,0-45-20.186-45-45s20.186-45,45-45s45,20.186,45,45S340.814,512,316,512z"/>
-              <path style={{fill:"#18A7FC"}} d="M398.5,42.599C356.499,14.099,306.098,0,256,0c-50.398,0-100.8,14.099-142.5,42.599  C92.802,56.398,87.4,84.598,101.203,105c13.799,20.398,41.697,26.398,62.695,12.299C190.902,99,223.598,89.7,256,89.7  s65.098,9.3,92.102,27.599c20.698,13.799,48.596,8.399,62.695-12.299C424.6,84.598,419.198,56.398,398.5,42.599z"/>
-              <path style={{fill:"#1689FC"}} d="M410.797,105c-14.099,20.698-41.997,26.098-62.695,12.299C321.098,99,288.402,89.7,256,89.7V0  c50.098,0,100.499,14.099,142.5,42.599C419.198,56.398,424.6,84.598,410.797,105z"/>
-              <path style={{fill:"#18A7FC"}} d="M106,422c-24.814,0-45-20.186-45-45V257c0-24.814,20.186-45,45-45s45,20.186,45,45v120  C151,401.814,130.814,422,106,422z"/>
-              <path style={{fill:"#1689FC"}} d="M406,422c-24.814,0-45-20.186-45-45V257c0-24.814,20.186-45,45-45s45,20.186,45,45v120  C451,401.814,430.814,422,406,422z"/>
-              </svg>
+              <path d="m444.464844 4.394531c-5.855469-5.859375-15.355469-5.859375-21.210938 0l-115.605468 115.605469h-262.148438c-24.8125 
+                0-45 20.1875-45 45v209.996094c0 24.816406 20.1875 45 45 45h16v77c0 6.097656 3.691406 11.589844 9.335938 13.890625 
+                5.726562 2.335937 12.183593.894531 16.386718-3.398438l85.585938-87.492187h174.691406c24.8125 0 45-20.183594 
+                45-45v-170.144532l115.605469-115.605468c5.855469-5.859375 5.855469-15.355469 0-21.214844zm-137.886719 243.949219-42.425781-42.425781 
+                127.28125-127.277344 42.425781 42.425781zm-58.40625-15.980469 31.960937 31.960938-54.78125 22.820312zm114.328125 142.632813c0 
+                8.273437-6.730469 15-15 15h-181c-4.035156 0-7.902344 1.628906-10.722656 4.511718l-64.277344 
+                65.707032v-55.21875c0-8.28125-6.714844-15-15-15h-31c-8.269531 0-15-6.726563-15-15v-209.996094c0-8.273438 
+                6.730469-15 15-15h232.144531l-45.3125 45.3125c-1.25 1.25-2.488281 2.972656-3.3125 5.011719l-41.519531 99.675781h-81c-8.285156 
+                0-15 6.714844-15 15 0 8.28125 6.714844 14.988281 15 14.988281h90.992188.011718c1.929688 0 4-.394531 
+                5.894532-1.207031l108.773437-45.304688c1.8125-.707031 3.640625-1.9375 5.015625-3.3125l45.3125-45.3125zm92.570312-275.144532-42.425781-42.425781 
+                21.214844-21.210937 42.425781 42.425781zm0 0"/>
+            </svg>
             </a>
         </SideMenu>
       </>
@@ -128,9 +129,9 @@ export class SideBar extends Component {
 
 const Label = styled.a`
   display: block;
-  padding: 10px;
+  padding: 9px;
   transition: ease 1.5s;
-  border-radius: 15%;
+  -webkit-transition: ease 1.5s;
   background-color: ${props =>
     props.isActiveLink ? "rgb(153, 152, 152)" : "none"};
   z-index: ${props => (props.isActiveLink ? "-1" : "none")};
@@ -138,57 +139,42 @@ const Label = styled.a`
   &:hover {
     background-color: darkgrey;
     cursor: pointer;
-    border-radius: 15%;
   }
   img {
     width: 35px;
     height: 35px;
     display: block;
   }
-  @media (max-width: 900px) {
-    padding: 10px;
-  }
 `;
 
 const SideMenu = styled.div`
-  width: 60px;
+  width: 60px !important;
   height: 100vh;
   background-color: lightgrey;
-  transition: ease 0.5s;
   overflow: auto;
   /* Hide scrollbar for Chrome, Safari and Opera */
   ::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  @media (max-width: 900px) {
-    width: 80px;
-  }
+  scrollbar-width: none;  /* Firefox */ 
+  transition: ease 0.5s !important;
+  -webkit-transition: ease 0.5s !important;
+  -moz-transition:ease 0.5s;
   button {
     background-color: Transparent;
     border: none;
+    outline:none;
     cursor: pointer;
-    padding: 0;
-  }
-  .feedback{
-    padding: 9px;
-  }
-  .feedback:hover{
-    background-color: darkgrey;
-    border-radius: 15%;
-    transition: ease 0.5s;
-    transform: scale(1.1);
   }
   button:hover {
     background-color: darkgrey;
-    border-radius: 15%;
-    transition: ease 0.5s;
-    .svg-plus {
-      stroke: blue;
-      transition: ease 0.5s;
-      transform: scale(1.3);
-    }
+  }
+  .feedback{
+    padding: 15px;
+  }
+  .feedback:hover{
+    background-color: darkgrey;
   }
 `;
 
