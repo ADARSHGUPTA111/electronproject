@@ -32,7 +32,8 @@
   "build": {
     "appId": "com.electron.custard",
     "mac": {
-      "category": "public.app-category.productivity":
+      	"identity": null,
+	"category": "public.app-category.productivity"
     }
   },
   "main": "public/electron.js",
