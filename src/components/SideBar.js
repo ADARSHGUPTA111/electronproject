@@ -165,10 +165,10 @@ const SideMenu = styled.div`
     background-color: Transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 5px;
   }
   .feedback{
-    padding: 9px;
+    padding: 15px;
   }
   .feedback:hover{
     background-color: darkgrey;
