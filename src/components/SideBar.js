@@ -129,13 +129,10 @@ export class SideBar extends Component {
 
 const Label = styled.a`
   display: block;
-  padding: 9px;
-  transition: ease 1.5s;
-  -webkit-transition: ease 1.5s;
+  padding: 10px;
   background-color: ${props =>
     props.isActiveLink ? "rgb(153, 152, 152)" : "none"};
   z-index: ${props => (props.isActiveLink ? "-1" : "none")};
-
   &:hover {
     background-color: darkgrey;
     cursor: pointer;
@@ -148,7 +145,10 @@ const Label = styled.a`
 `;
 
 const SideMenu = styled.div`
-  width: 60px !important;
+  width: 60px;
+  @media (max-width: 900px) {
+    width: 80px;
+  }
   height: 100vh;
   background-color: lightgrey;
   overflow: auto;
@@ -157,25 +157,26 @@ const SideMenu = styled.div`
     display: none;
   }
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */ 
-  transition: ease 0.5s !important;
-  -webkit-transition: ease 0.5s !important;
-  -moz-transition:ease 0.5s;
+  scrollbar-width: none;  /* Firefox */
+  @media (max-width: 900px) {
+    width: 80px;
+  }
   button {
     background-color: Transparent;
     border: none;
-    outline:none;
     cursor: pointer;
-  }
-  button:hover {
-    background-color: darkgrey;
+    padding: 0;
   }
   .feedback{
-    padding: 15px;
+    padding: 9px;
   }
   .feedback:hover{
     background-color: darkgrey;
   }
+  button:hover {
+    background-color: darkgrey;
+  }
 `;
+
 
 export default SideBar;
