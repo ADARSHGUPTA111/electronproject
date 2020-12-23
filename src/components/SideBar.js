@@ -86,7 +86,15 @@ export class SideBar extends Component {
                   onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
                   // key={i}
                 >
-                  <img alt="icon" src={`${eachLink.link}/favicon.ico`} />
+                  <img
+                    src={`${eachLink.link}/favicon.ico`}
+                    alt={`${eachLink.label}`}
+                    title={`${eachLink.label}`}
+                    onError={e => {
+                      e.target.onerror = null;
+                      e.target.src = `https://ui-avatars.com/api/?name=${eachLink.label}&rounded=true&bold=true&background=0D8ABC`;
+                    }}
+                  />
                 </Label>
               );
             }
