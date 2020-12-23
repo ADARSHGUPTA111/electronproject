@@ -91,6 +91,7 @@ export class AddCustomWindow extends Component {
               placeholder="App Name"
               value={this.state.value}
               onChange={this.handleInputChange}
+              required
             />
             <label htmlFor="link"> Link for App :</label>
             <input
@@ -100,6 +101,7 @@ export class AddCustomWindow extends Component {
               placeholder="link to website"
               value={this.state.value}
               onChange={this.handleInputChange}
+              required
             />
             <input type="submit" value="Submit" />
             &nbsp;

@@ -62,43 +62,27 @@ export class SideBar extends Component {
       <>
         <SideMenu>
           {sideBarData.map(eachLink => {
-            if (
-              eachLink.label === "Slack" ||
-              eachLink.label === "Invide Labs"
-            ) {
-              return (
-                <Label
-                  isActiveLink={eachLink.link === activeLink}
-                  href=""
-                  onClick={e => setActiveLink(e, eachLink.link, eachLink.label)}
-                  onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
-                  // key={i}
-                >
-                  <img alt="icon" src={eachLink.image} />
-                </Label>
-              );
-            } else {
-              return (
-                <Label
-                  isActiveLink={eachLink.link === activeLink}
-                  href=""
-                  onClick={e => setActiveLink(e, eachLink.link, eachLink.label)}
-                  onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
-                  // key={i}
-                >
-                  <img
-                    src={`${eachLink.link}/favicon.ico`}
-                    alt={`${eachLink.label}`}
-                    title={`${eachLink.label}`}
-                    onError={e => {
-                      e.target.onerror = null;
-                      e.target.src = `https://ui-avatars.com/api/?name=${eachLink.label}&rounded=true&bold=true&background=0D8ABC`;
-                    }}
-                  />
-                </Label>
+            return (
+              <Label
+                isActiveLink={eachLink.link === activeLink}
+                href=""
+                onClick={e => setActiveLink(e, eachLink.link, eachLink.label)}
+                onDoubleClick={e => this.handleDoubleClick(e, eachLink.label)}
+                // key={i}
+              >
+                <img
+                  src={`${eachLink.link}/favicon.ico`}
+                  alt={`${eachLink.label}`}
+                  title={`${eachLink.label}`}
+                  onError={e => {
+                    e.target.onerror = null;
+                    e.target.src = `https://ui-avatars.com/api/?name=${eachLink.label}&rounded=true&background=0D8ABC`;
+                  }}
+                />
+              </Label>
               );
             }
-          })}
+          )}
           <button onClick={this.openAddCustomWindow}>
             <svg
               className="svg-plus"
