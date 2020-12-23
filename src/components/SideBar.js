@@ -19,26 +19,27 @@ export class SideBar extends Component {
       sideBarData: JSON.parse(window.localStorage.getItem("sideBarData")),
       openNewWindow: !this.state.openNewWindow
     });
-    console.log("hey!@");
   };
 
   //this function can delete any app
   handleDoubleClick = (e, labelToDelete) => {
-    // e.preventDefault();
-    console.log("hi");
-    let newSideBarData = JSON.parse(window.localStorage.getItem("sideBarData"));
-    console.log(newSideBarData[0]["label"]);
-    newSideBarData = newSideBarData.filter(
-      eachsideBarData => eachsideBarData.label !== labelToDelete
-    );
+    if (window.confirm("Are you Sure , you want to delete this app?")) {
+      let newSideBarData = JSON.parse(
+        window.localStorage.getItem("sideBarData")
+      );
+      console.log(newSideBarData[0]["label"]);
+      newSideBarData = newSideBarData.filter(
+        eachsideBarData => eachsideBarData.label !== labelToDelete
+      );
 
-    localStorage.setItem("sideBarData", JSON.stringify(newSideBarData));
-    this.setState({
-      ...this.state,
-      sideBarData: JSON.parse(window.localStorage.getItem("sideBarData"))
-    });
-    //After deleting Any App the default app gets opened
-    this.props.setActiveLink(e, "https://app.invidelabs.com");
+      localStorage.setItem("sideBarData", JSON.stringify(newSideBarData));
+      this.setState({
+        ...this.state,
+        sideBarData: JSON.parse(window.localStorage.getItem("sideBarData"))
+      });
+      //After deleting Any App the default app gets opened
+      this.props.setActiveLink(e, "https://app.invidelabs.com");
+    }
   };
 
   refreshOnSubmitInAddCustomWindow = (e, activeLink, activeLabel) => {
@@ -76,8 +77,7 @@ export class SideBar extends Component {
                   <img alt="icon" src={eachLink.image} />
                 </Label>
               );
-            }
-            else {
+            } else {
               return (
                 <Label
                   isActiveLink={eachLink.link === activeLink}
@@ -92,7 +92,12 @@ export class SideBar extends Component {
             }
           })}
           <button onClick={this.openAddCustomWindow}>
-            <svg className="svg-plus" height="45px" stroke="black" viewBox="0 0 100 100">
+            <svg
+              className="svg-plus"
+              height="45px"
+              stroke="black"
+              viewBox="0 0 100 100"
+            >
               <title>Add Your App</title>
               <line x1="32.5" y1="50" x2="67.5" y2="50" strokeWidth="7"></line>
               <line x1="50" y1="32.5" x2="50" y2="67.5" strokeWidth="7"></line>
@@ -106,9 +111,16 @@ export class SideBar extends Component {
             />
           )}
           <a href="mailto:khandelwalsarvesh8@gmail.com,surajgupta7534@gmail.com,adarshgupta4399@gmail.com?subject=Feedback">
-            <svg className="feedback" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 511 511.9996" width="30px ">
+            <svg
+              className="feedback"
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 0 511 511.9996"
+              width="30px "
+            >
               <title>Feedback</title>
-              <path d="m444.464844 4.394531c-5.855469-5.859375-15.355469-5.859375-21.210938 0l-115.605468 115.605469h-262.148438c-24.8125 
+              <path
+                d="m444.464844 4.394531c-5.855469-5.859375-15.355469-5.859375-21.210938 0l-115.605468 115.605469h-262.148438c-24.8125 
                 0-45 20.1875-45 45v209.996094c0 24.816406 20.1875 45 45 45h16v77c0 6.097656 3.691406 11.589844 9.335938 13.890625 
                 5.726562 2.335937 12.183593.894531 16.386718-3.398438l85.585938-87.492187h174.691406c24.8125 0 45-20.183594 
                 45-45v-170.144532l115.605469-115.605468c5.855469-5.859375 5.855469-15.355469 0-21.214844zm-137.886719 243.949219-42.425781-42.425781 
@@ -118,9 +130,10 @@ export class SideBar extends Component {
                 6.730469-15 15-15h232.144531l-45.3125 45.3125c-1.25 1.25-2.488281 2.972656-3.3125 5.011719l-41.519531 99.675781h-81c-8.285156 
                 0-15 6.714844-15 15 0 8.28125 6.714844 14.988281 15 14.988281h90.992188.011718c1.929688 0 4-.394531 
                 5.894532-1.207031l108.773437-45.304688c1.8125-.707031 3.640625-1.9375 5.015625-3.3125l45.3125-45.3125zm92.570312-275.144532-42.425781-42.425781 
-                21.214844-21.210937 42.425781 42.425781zm0 0"/>
+                21.214844-21.210937 42.425781 42.425781zm0 0"
+              />
             </svg>
-            </a>
+          </a>
         </SideMenu>
       </>
     );
@@ -156,8 +169,8 @@ const SideMenu = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   @media (max-width: 900px) {
     width: 80px;
   }
@@ -167,16 +180,15 @@ const SideMenu = styled.div`
     cursor: pointer;
     padding: 5px;
   }
-  .feedback{
+  .feedback {
     padding: 15px;
   }
-  .feedback:hover{
+  .feedback:hover {
     background-color: darkgrey;
   }
   button:hover {
     background-color: darkgrey;
   }
 `;
-
 
 export default SideBar;

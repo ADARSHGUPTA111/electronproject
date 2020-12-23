@@ -81,7 +81,6 @@ class App extends Component {
 
       for (var i = 0; i < newSideBarData.length; i++) {
         if (newSideBarData[i]["label"] === this.state.activeLabel) {
-          console.log(this.state.activeLabel);
           newSideBarData[i]["restoredLink"] = myWebview.getURL();
         }
       }
