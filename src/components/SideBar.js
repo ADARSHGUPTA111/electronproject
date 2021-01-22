@@ -76,7 +76,7 @@ export class SideBar extends Component {
                   title={`${eachLink.label}`}
                   onError={e => {
                     e.target.onerror = null;
-                    e.target.src = `https://ui-avatars.com/api/?name=${eachLink.label}&rounded=true&background=0D8ABC`;
+                    e.target.src = `https://ui-avatars.com/api/?name=${eachLink.label}&rounded=true&background=random&bold=true`;
                   }}
                 />
               </Label>
